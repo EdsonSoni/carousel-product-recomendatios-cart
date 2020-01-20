@@ -7639,42 +7639,107 @@ $transition-controls-video: color 0.2s $ease-transition, background-color 0.2s $
 }
 
 /*================ Product cart snippet grid================*/
+
 .product-cart-recomendations{
-margin-top: 30px;
-margin-bottom: 30px;
-}
-
-.related-products{
-  height:400px;
-  display: flex;
-  justify-content: space-between;
-  .related-item{
-    position:relative;
-    width: 33.33%;
-    height:100%;
-    overflow: hidden;
-    //flex: 1;
-    }
-}
-
-.name{
-  display: block;
-  height: 63px;
-}
-.copy{
-  overflow: hidden;
-  height: 84px;
-  a{
-    height:23px;
+  margin-top: 30px;
+  margin-bottom: 30px;
   }
-}
+  
+  
+  
+  .related-products{
+    height:400px;
+    display: flex;
+    justify-content: space-between;
+    .related-item{
+      position:relative;
+      width: 33.33%;
+      height:100%;
+      overflow: hidden;
+   
+      //flex: 1;
+      }
+  }
+  
+  .more{
+height:27px;
+  }
 
-.image{
-  height: 100px;
-}
-#title{
-  text-align:center;
-}
+  .name{
+    display: block;
+    height: 63px;
+    margin: 0;
+  }
+  .copy{
+    overflow: hidden;
+    height: 84px;
+    a{
+      height:23px;
+    }
+  }
+  
+  .image{
+    height: 200px;
+  }
+  #title{
+    text-align:center;
+  }
+  .price{
+    position:relative;
+    width: 100%;
+    height:27px;
+    a{
+      position:relative;
+      width:100%;
+      height:27px;
+    }
+  }
+  
+  .carousel{
+    padding: 0 30px;
+  }
 
+  
+  .carousel__button--prev, .carousel__button--next{
+    position: relative;
+    width:50px;
+    height:50px;
+    top: 0;
+    bottom: 0;
+  }
+  
+  .carousel__button--prev{
+    left: 0;
+  }
+  .carousel__button--next{
+    right: 0;
+  }
+  .carousel__container {
+    position:relative;
+    overflow: hidden;
+    //height: 300px;
+  }
+  .carousel__list{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .carousel__list.unwrap{
+    flex-wrap: nowrap;
+  }
+  .carousel__item{
+    flex: 1 0 309px;
+  /*  max-width: 300px; */
+    //height: 300px;
+    //background-color: #ccc;
+    text-align: center;
+    border: 1px solid #fff;
+  }
+  
+  
+  
+  
+  
+  
 
 
