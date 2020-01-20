@@ -1,4 +1,5 @@
-<li class="{{ prod.handle }}" style="display:block">
+<div class="item-related  carousel__item js-carousel-item " style="display:none">
+<li class="{{ prod.handle }}" >
         <h3 class="name">
             <a href="{{ prod.url }}" title="{{ prod.title | escape }}">{{ prod.title }}</a>
         </h3>
@@ -14,6 +15,7 @@
         <div class="copy">
             {{ prod.description | strip_html | truncatewords: 15 }}
         </div>
-        <div class="more"><a href="{{ prod.url }}" title="{{ prod.title | escape }}">View</a></div>
+        <div class="more"><a class="btn" href="{{ prod.url }}" title="{{ prod.title | escape }}">Ver producto</a></div>
         <div class="clear"></div>
     </li>
+</div>

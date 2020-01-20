@@ -55,7 +55,11 @@
 <div class="product-cart-recomendations">
         <div class="carousel js-carousel">
                 <div class="carousel__container js-carousel-container">
-                    <div class="carousel__list js-carousel-list">
+                        <div class="carousel__nav">
+                                <button class="carousel__button--prev js-carousel-button" data-dir="prev">&lt;</button>
+                                <button class="carousel__button--next js-carousel-button" data-dir="next">&gt;</button>
+                            </div>
+                    <div class="carousel__list js-carousel-list" data-displayed-items="6">
                             {% for prod in collections.all.products %}
                             
                             {% for item in cart.items %}
@@ -72,9 +76,9 @@
                         
                         <br>
 
-                        <div class="carousel__item js-carousel-item related-item ">
+              
                          {%include 'product-recomend-item', prod: prod%}
-                        </div>
+                        
 
                     
                          
@@ -83,19 +87,18 @@
                         {% endfor %}
                     </div>
                 </div>
-                <div class="carousel__nav">
-                    <button class="carousel__button--prev js-carousel-button" data-dir="prev">&lt;</button>
-                    <button class="carousel__button--next js-carousel-button" data-dir="next">&gt;</button>
-                </div>
+              
             </div>
 </div>
 
 
 
+
     
 <script>
-    var Total_item = $("li.related-item").length, // Total number of raltaed item to choose from
-        item_toshow = 3, // total items to show in your cart page
+    
+    var Total_item = $("div.item-related").length, // Total number of raltaed item to choose from
+        item_toshow = 6, // total items to show in your cart page
         array = [], // array with index number of all available items
         shuffle = [], // array with shuffled index number
         rnd;
@@ -112,7 +115,9 @@
     }
     
     for (i = 0; i < item_toshow; i++){
-        $("li.related-item").slice(shuffle[i],shuffle[i]+1).show();
+     
+        $("div.item-related").slice(shuffle[i],shuffle[i]+1).show();
     }
+  
         
 </script>

@@ -5175,8 +5175,16 @@ $(".js-carousel").each(function(){
 		$carouselButton = $carousel.find(".js-carousel-button"),
 		setItemWidth = function(){
 			$carouselList.removeAttr("style");
-			var curWidth = $($carouselItem[0]).outerWidth() * $carouselItem.length;
-			$carouselList.css("width", curWidth);
+      var curWidth = $($carouselItem[0]).outerWidth() * $carouselList.data('displayed-items');
+      $carouselList.css("width", curWidth);
+      
+    },
+    centerButtons = function(){
+     var $buttons = $carousel.find(".js-carousel-button"),
+     $carouselContainer = $carousel.find(".js-carousel-container");
+     var yPosition =  ($carouselContainer.outerHeight() / 2 ) - 50;
+     $buttons.css('top', yPosition + 'px');
+     
 		},
 		slide = function(){
 			var $button = $(this),
@@ -5193,12 +5201,7 @@ $(".js-carousel").each(function(){
 			} else {
 				moveto = (before >= 0) ? 0 : curPos + containerWidth;
 			}
-      console.log('before='+ before);
-      console.log('curpos='+curPos);
-      console.log('moveTo='+ moveto);
-      console.log('listWidth='+ listWidth);
-      console.log('containerWidth='+ containerWidth);
-      console.log('___________________');
+
 
   
      
@@ -5213,9 +5216,11 @@ $(".js-carousel").each(function(){
 			});
 		};
 	$(window).resize(function(){
-		setItemWidth();
+    setItemWidth();
+ 
 	});
-	setItemWidth();
+  setItemWidth();
+
 	
 	$carouselButton.on("click", slide);
 });
