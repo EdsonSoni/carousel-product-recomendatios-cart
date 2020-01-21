@@ -91,8 +91,61 @@
 
     
 <script>
-    
-    var Total_item = $("div.item-related").length, // Total number of raltaed item to choose from
+
+    function changeProducts(){
+        /*
+        var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+      // document.getElementById("demo").innerHTML = xhttp.responseText;
+      //console.log(xhttp.responseText);
+      var request = JSON.parse(xhttp.responseText);
+      var productList = request.products;
+     
+      console.log('products[0].title='+productList[0].title);
+    }
+};
+xhttp.open("GET", "https://2b330157ee7c8eb619e549aa58c12572:c7732fdd717354b9f5a2e44f1a4727b7@terratest3.myshopify.com/admin/api/2019-10/products.json", true);
+xhttp.send();
+       */
+ 
+        var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+       // Typical action to be performed when the document is ready:
+      // document.getElementById("demo").innerHTML = xhttp.responseText;
+      //console.log(xhttp.responseText);
+
+      console.log('response = '+xhttp.responseText);
+    }
+    else{
+
+        console.log('ReadyState='+ this.readyState);
+        console.log('Status='+ this.status);
+    }
+};
+xhttp.open("POST", "https://terratest3.myshopify.com/admin/api/2019-10/graphql.json", true);
+xhttp.setRequestHeader('Content-Type', 'application/json');
+xhttp.setRequestHeader('X-Shopify-Access-Token', 'c7732fdd717354b9f5a2e44f1a4727b7');
+var query = 
+'{ \n ' +
+  'products(query: "created_at:<2019", first: 5)' + '{ \n ' +
+    'edges' +  '{ \n ' +
+      'node' + '{ \n ' +
+        'title \n ' +
+        'description \n ' +
+      '} \n '+
+    '} \n ' +
+  '} \n ' +
+'} \n '
+ ;
+console.log('query='+ query);
+xhttp.send(JSON.stringify(query));
+    }
+
+    function showProducts(){
+        var Total_item = $("div.item-related").length, // Total number of raltaed item to choose from
         item_toshow = 6, // total items to show in your cart page
         array = [], // array with index number of all available items
         shuffle = [], // array with shuffled index number
@@ -113,6 +166,15 @@
      
         $("div.item-related").slice(shuffle[i],shuffle[i]+1).show();
     }
+    }
+
+    $( document ).ready(function() {
+    
+   showProducts();
+   changeProducts();
+});
+    
+ 
   
         
 </script>
