@@ -5181,10 +5181,43 @@ $(".js-carousel").each(function(){
       else{
         var curWidth = $($carouselItem[0]).outerWidth() * $carouselList.data('displayed-items');
       }
+      
    
       $carouselList.css("width", curWidth);
       
     },
+    showProducts= function(){
+      console.log('new');
+      var Total_item = $("div.item-related").length, // Total number of raltaed item to choose from
+      item_toshow = 6, // total items to show in your cart page
+      array = [], // array with index number of all available items
+      shuffle = [], // array with shuffled index number
+      rnd;
+
+      console.log('total_item'+ Total_item);
+  
+  for (i = 0; i < Total_item; i++) {
+
+    array[i] = i;
+  }
+  
+  for (i = 0; i < Total_item; i++) { // pick numbers
+    rnd = Math.floor(Math.random() * array.length); 
+    shuffle[i] = array.splice(rnd,1)[0]; // remove the selected number from the array and get it in another variable
+  }
+  
+  for (i = 0; i < item_toshow; i++){
+   
+      $("div.item-related").slice(shuffle[i],shuffle[i]+1).show();
+      
+    
+  }
+  for (i = 0; i < item_toshow; i++){
+   
+  // $("div.item-related").addClass('');
+   
+}
+  },
 		slide = function(){
 			var $button = $(this),
 				dir = $button.data("dir"),
@@ -5215,10 +5248,14 @@ $(".js-carousel").each(function(){
 			});
 		};
 	$(window).resize(function(){
+  
     setItemWidth();
+
  
-	});
+  });
+  showProducts();
   setItemWidth();
+  showProducts();
 
 	
 	$carouselButton.on("click", slide);
