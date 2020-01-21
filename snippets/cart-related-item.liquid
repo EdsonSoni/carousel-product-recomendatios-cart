@@ -125,23 +125,24 @@ xhttp.onreadystatechange = function() {
         console.log('Status='+ this.status);
     }
 };
-xhttp.open("POST", "https://terratest3.myshopify.com/admin/api/2019-10/graphql.json", true);
-xhttp.setRequestHeader('Content-Type', 'application/json');
+xhttp.open("POST", " https://2b330157ee7c8eb619e549aa58c12572:c7732fdd717354b9f5a2e44f1a4727b7@terratest3.myshopify.com/admin/api/2020-01/graphql.json",true);
+xhttp.setRequestHeader('Content-Type', 'application/graphql');
 xhttp.setRequestHeader('X-Shopify-Access-Token', 'c7732fdd717354b9f5a2e44f1a4727b7');
-var query = 
-'{ \n ' +
-  'products(query: "created_at:<2019", first: 5)' + '{ \n ' +
-    'edges' +  '{ \n ' +
-      'node' + '{ \n ' +
-        'title \n ' +
-        'description \n ' +
-      '} \n '+
-    '} \n ' +
-  '} \n ' +
-'} \n '
+var query =  
+' { \n ' +
+  ' products(query: "tag:pantalón OR tag:sueter", first: 6, sortKey: TITLE) ' + ' { \n ' +
+    ' edges ' + ' { \n ' +
+      ' node ' + ' { \n ' +
+        ' id \n ' + 
+        ' title \n ' +
+        ' tags \n ' +
+      ' } \n ' +
+    ' } \n ' +
+  ' } \n ' +
+' } \n '
  ;
 console.log('query='+ query);
-xhttp.send(JSON.stringify(query));
+xhttp.send(query);
     }
 
     function showProducts(){
